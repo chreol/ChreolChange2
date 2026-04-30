@@ -1,0 +1,29 @@
+<!-- Crée un fichier temporaire public/icons/generate.html -->
+<!DOCTYPE html>
+<html>
+<head><title>Générateur d'icône</title></head>
+<body>
+  <canvas id="c" width="512" height="512"></canvas>
+  <script>
+    const c = document.getElementById('c');
+    const ctx = c.getContext('2d');
+    
+    // Fond bleu
+    ctx.fillStyle = '#1e40af';
+    ctx.fillRect(0, 0, 512, 512);
+    
+    // Texte
+    ctx.fillStyle = 'white';
+    ctx.font = 'bold 200px Arial';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('CE', 256, 256);
+    
+    // Télécharger
+    const link = document.createElement('a');
+    link.download = 'icon-512x512.png';
+    link.href = c.toDataURL();
+    link.click();
+  </script>
+</body>
+</html>

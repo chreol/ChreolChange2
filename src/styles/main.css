@@ -1,0 +1,92 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ✅ Définir les couleurs personnalisées dans @layer */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-slate-50 text-gray-800 antialiased; /* ✅ Utiliser couleurs Tailwind natives */
+  }
+}
+
+@layer components {
+  /* Cartes */
+  .card {
+    @apply bg-white rounded-2xl shadow-lg p-6 border border-gray-100;
+  }
+  
+  /* Boutons */
+  .btn-primary {
+    @apply bg-blue-700 hover:bg-blue-800 text-white font-semibold 
+           py-3 px-6 rounded-xl transition-all duration-200 
+           flex items-center justify-center gap-2 shadow-lg
+           active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-secondary {
+    @apply bg-amber-500 hover:bg-amber-600 text-white font-semibold 
+           py-3 px-6 rounded-xl transition-all duration-200 
+           flex items-center justify-center gap-2 shadow-lg
+           active:scale-95;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-blue-700 text-blue-700 
+           hover:bg-blue-700 hover:text-white font-semibold 
+           py-2 px-5 rounded-lg transition-all duration-200;
+  }
+
+  /* Inputs */
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-gray-300 
+           focus:ring-2 focus:ring-blue-700 focus:border-transparent 
+           outline-none transition-all duration-200 text-lg
+           placeholder-gray-400 bg-white;
+  }
+
+  /* Badges */
+  .badge-rate {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full 
+           bg-blue-50 border border-blue-200 text-blue-800 font-semibold;
+  }
+
+  /* WhatsApp Float */
+  .whatsapp-float {
+    @apply fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20bd5a] 
+           text-white rounded-full p-4 shadow-lg transition-all duration-300 
+           flex items-center justify-center gap-2
+           hover:scale-110 active:scale-95;
+  }
+
+  /* FAQ */
+  .faq-item {
+    @apply border-b border-gray-200 last:border-b-0;
+  }
+  .faq-question {
+    @apply w-full flex items-center justify-between py-4 px-2 
+           text-left font-medium text-gray-800 hover:text-blue-700 
+           transition-colors duration-200 focus:outline-none;
+  }
+  .faq-answer {
+    @apply overflow-hidden transition-all duration-300 ease-in-out;
+  }
+  .faq-answer-content {
+    @apply pb-4 px-2 text-gray-600 leading-relaxed;
+  }
+}
+
+@layer utilities {
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

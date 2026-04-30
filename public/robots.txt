@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://chreol.github.io/ChreolChangeMoney/sitemap.xml
+
+# Interdire l'indexation des pages de test
+Disallow: /test/
+Disallow: /dev/
+
+# Crawl-delay pour les bots agressifs
+Crawl-delay: 10
