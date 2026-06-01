@@ -18,7 +18,8 @@ import gloImg    from '@/../assets/glo.webp';
 import togocomImg from '@/../assets/togocom.webp';
 
 // Bank / payment logos
-import paypalImg from '@/../assets/paypal.webp';
+import paypalImg  from '@/../assets/paypal.webp';
+import envoiImg   from '@/../assets/envoi_d_argent.webp';
 import irisImg   from '@/../assets/iris_payment.webp';
 import alphaImg  from '@/../assets/alpha_bank.webp';
 import piraeuImg from '@/../assets/pireaus_bank.webp';
@@ -338,6 +339,31 @@ export class AfricaPage {
     });
 
     this.container.querySelector('#whatsapp-btn')?.addEventListener('click', () => this.submitWhatsApp());
+
+    // Lightbox — delegation on container
+    this.container.addEventListener('click', (e) => {
+      const t = e.target as HTMLElement;
+      if (t.closest('#africa-cash-img-btn')) {
+        const lb = document.querySelector('#africa-cash-lightbox') as HTMLElement;
+        if (lb) { lb.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+      }
+      if (t.closest('#africa-lb-close') || t.id === 'africa-cash-lightbox') {
+        const lb = document.querySelector('#africa-cash-lightbox') as HTMLElement;
+        if (lb) { lb.classList.add('hidden'); document.body.style.overflow = ''; }
+      }
+      if (t.closest('#africa-lb-minimize')) {
+        const lb = document.querySelector('#africa-cash-lightbox') as HTMLElement;
+        if (lb) { lb.classList.add('hidden'); document.body.style.overflow = ''; }
+        document.querySelector('#africa-cash-img-btn')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const lb = document.querySelector('#africa-cash-lightbox') as HTMLElement;
+        if (lb) { lb.classList.add('hidden'); document.body.style.overflow = ''; }
+      }
+    });
   }
 
   // ─────────────────────────────────────────────
@@ -434,6 +460,41 @@ export class AfricaPage {
           <p class="font-semibold text-gray-800">📍 Tenedou 4 — Restaurant Pakistanais</p>
           <p class="text-gray-500 text-xs">Platia Amerikiss, Athènes, Grèce</p>
           <p class="text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded p-2">📸 Photo du dépôt obligatoire à envoyer sur WhatsApp</p>
+
+          <!-- Image illustrative -->
+          <div class="rounded-xl border-2 border-dashed border-green-300 bg-white p-2">
+            <p class="text-xs font-semibold text-green-800 mb-1.5 flex items-center gap-1">
+              🖼️ Suivre l'exemple
+              <span class="text-gray-400 font-normal">(cliquer pour agrandir)</span>
+            </p>
+            <button id="africa-cash-img-btn" class="w-full group relative rounded-lg overflow-hidden cursor-zoom-in focus:outline-none">
+              <img src="${envoiImg}" alt="Exemple dépôt espèces"
+                   class="w-full max-h-40 object-cover rounded-lg shadow transition-all group-hover:brightness-90"
+                   onerror="this.closest('.rounded-xl').style.display='none'"/>
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <span class="bg-black/60 text-white text-xs font-bold px-3 py-1.5 rounded-full">🔍 Agrandir</span>
+              </div>
+            </button>
+          </div>
+
+          <!-- Lightbox -->
+          <div id="africa-cash-lightbox"
+               class="hidden fixed inset-0 z-[9999] flex items-center justify-center p-4"
+               style="background:rgba(0,0,0,0.9)">
+            <div class="relative max-w-3xl w-full">
+              <div class="flex justify-end gap-2 mb-3">
+                <button id="africa-lb-minimize"
+                        class="bg-white/20 hover:bg-white/40 text-white rounded-full w-9 h-9 flex items-center justify-center text-xl font-bold transition-all"
+                        title="Réduire">−</button>
+                <button id="africa-lb-close"
+                        class="bg-red-500 hover:bg-red-600 text-white rounded-full w-9 h-9 flex items-center justify-center text-xl font-bold transition-all"
+                        title="Fermer">×</button>
+              </div>
+              <img src="${envoiImg}" alt="Exemple dépôt espèces agrandie"
+                   class="w-full rounded-2xl shadow-2xl object-contain max-h-[75vh]"/>
+              <p class="text-center text-white/70 text-xs mt-3">Suivre l'exemple — prenez votre photo de la même façon</p>
+            </div>
+          </div>
         </div>`;
       case 'iris':
         return `<div class="mt-3 space-y-2">

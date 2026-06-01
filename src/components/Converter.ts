@@ -3,9 +3,10 @@ import { Calculator, getCommission } from '@/services/calculator';
 import { WhatsAppService } from '@/services/whatsapp';
 import { generateUSSDCodes, copyUSSD } from '@/services/ussd';
 import type { Direction } from '@/types';
-import paypalImg  from '@/../assets/paypal.webp';
-import mtnLogo    from '@/../assets/Mtn_Money.webp';
-import orangeLogo from '@/../assets/oange_Money.webp';
+import paypalImg   from '@/../assets/paypal.webp';
+import mtnLogo     from '@/../assets/Mtn_Money.webp';
+import orangeLogo  from '@/../assets/oange_Money.webp';
+import envoiImg    from '@/../assets/envoi_d_argent.webp';
 
 const NET_LOGO: Record<string, string> = { MTN: mtnLogo, Orange: orangeLogo };
 import irisImg from '@/../assets/iris_payment.webp';
@@ -351,6 +352,36 @@ export class Converter {
     }
 
     this.container.querySelector('#whatsapp-btn')?.addEventListener('click', () => this.sendToWhatsApp());
+
+    // Lightbox delegation — fires whenever payment details are injected
+    this.container.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+
+      // Open lightbox
+      if (target.closest('#cash-img-btn')) {
+        const lb = this.container.querySelector('#cash-lightbox') as HTMLElement;
+        if (lb) { lb.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+      }
+      // Close (×)
+      if (target.closest('#cash-lb-close')) this.closeLightbox();
+      // Minimize (−) — scrolls the thumbnail back into view and closes
+      if (target.closest('#cash-lb-minimize')) {
+        this.closeLightbox();
+        this.container.querySelector('#cash-img-btn')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+      // Click outside image to close
+      if (target.id === 'cash-lightbox') this.closeLightbox();
+    });
+
+    // ESC key closes lightbox
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') this.closeLightbox();
+    });
+  }
+
+  private closeLightbox(): void {
+    const lb = this.container.querySelector('#cash-lightbox') as HTMLElement;
+    if (lb) { lb.classList.add('hidden'); document.body.style.overflow = ''; }
   }
 
   private selectPayment(method: PaymentMethod): void {
@@ -392,6 +423,43 @@ export class Converter {
           <div class="bg-amber-50 border border-amber-300 rounded-lg p-3 text-sm text-amber-800">
             <p class="font-bold">📸 Obligatoire</p>
             <p class="text-xs mt-1">Prenez une <strong>photo du dépôt</strong> sur le comptoir et envoyez-la en <strong>privé sur WhatsApp</strong></p>
+          </div>
+
+          <!-- Image illustrative avec lightbox -->
+          <div class="rounded-xl overflow-hidden border-2 border-dashed border-green-300 bg-green-50 p-3">
+            <p class="text-xs font-semibold text-green-800 mb-2 flex items-center gap-1 flex-wrap">
+              🖼️ Suivre l'exemple comme sur l'image
+              <span class="text-gray-400 font-normal">(cliquer pour agrandir)</span>
+            </p>
+            <button id="cash-img-btn" class="w-full group relative rounded-lg overflow-hidden cursor-zoom-in focus:outline-none">
+              <img src="${envoiImg}" alt="Exemple dépôt espèces"
+                   class="w-full max-h-48 object-cover rounded-lg shadow transition-all group-hover:brightness-90"
+                   onerror="this.closest('.rounded-xl').style.display='none'"/>
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <span class="bg-black/60 text-white text-xs font-bold px-3 py-1.5 rounded-full">🔍 Agrandir</span>
+              </div>
+            </button>
+          </div>
+
+          <!-- Lightbox overlay -->
+          <div id="cash-lightbox"
+               class="hidden fixed inset-0 z-[9999] flex items-center justify-center p-4"
+               style="background:rgba(0,0,0,0.9)">
+            <div class="relative max-w-3xl w-full">
+              <div class="flex justify-end gap-2 mb-3">
+                <button id="cash-lb-minimize"
+                        class="bg-white/20 hover:bg-white/40 text-white rounded-full w-9 h-9 flex items-center justify-center text-xl font-bold transition-all"
+                        title="Réduire">−</button>
+                <button id="cash-lb-close"
+                        class="bg-red-500 hover:bg-red-600 text-white rounded-full w-9 h-9 flex items-center justify-center text-xl font-bold transition-all"
+                        title="Fermer">×</button>
+              </div>
+              <img src="${envoiImg}" alt="Exemple dépôt espèces agrandie"
+                   class="w-full rounded-2xl shadow-2xl object-contain max-h-[75vh]"/>
+              <p class="text-center text-white/70 text-xs mt-3">
+                Suivre l'exemple comme sur l'image — prenez votre photo de la même façon
+              </p>
+            </div>
           </div>
         </div>`;
 
