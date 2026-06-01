@@ -120,11 +120,13 @@ export class Layout {
                 Service de change EUR/FCFA rapide, sécurisé et fiable.<br/>
                 Transferts Grèce ↔ Afrique — 7j/7.
               </p>
-              <ul class="space-y-1.5 text-sm">
-                <li><a href="index.html" class="hover:text-white transition-colors">🏠 Accueil</a></li>
-                <li><a href="africa.html" class="hover:text-white transition-colors">🌍 Africa</a></li>
-                <li><a href="services.html" class="hover:text-white transition-colors">🛎 Services</a></li>
-              </ul>
+              <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+                <a href="index.html" class="hover:text-white transition-colors">🏠 Accueil</a>
+                <span class="text-gray-700">·</span>
+                <a href="africa.html" class="hover:text-white transition-colors">🌍 Africa</a>
+                <span class="text-gray-700">·</span>
+                <a href="services.html" class="hover:text-white transition-colors">🛎 Services</a>
+              </div>
             </div>
 
             <!-- Horaires -->
