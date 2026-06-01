@@ -11,48 +11,64 @@ const waSvg = (cls: string) =>
 export class Layout {
   static getHeader(active: ActivePage = 'home'): string {
     const link = (href: string, label: string, page: ActivePage) =>
-      `<a href="${href}" class="font-medium transition-colors ${active === page ? 'text-blue-700 border-b-2 border-blue-700' : 'text-gray-700 hover:text-blue-700'}">${label}</a>`;
+      `<a href="${href}" class="font-medium transition-colors ${
+        active === page
+          ? 'text-amber-400 border-b-2 border-amber-400 pb-0.5'
+          : 'text-gray-300 hover:text-amber-400'
+      }">${label}</a>`;
 
     const mlink = (href: string, label: string, page: ActivePage) =>
-      `<a href="${href}" class="px-3 py-2 rounded transition-colors ${active === page ? 'text-blue-700 font-bold bg-blue-50' : 'text-gray-700 hover:bg-blue-50'}">${label}</a>`;
+      `<a href="${href}" class="px-3 py-2 rounded transition-colors ${
+        active === page
+          ? 'text-amber-400 font-bold bg-white/10'
+          : 'text-gray-300 hover:bg-white/10 hover:text-white'
+      }">${label}</a>`;
 
     return `
-      <header class="bg-white shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-4">
+      <header class="bg-gradient-to-r from-gray-900 via-[#0b1437] to-gray-900 shadow-lg shadow-black/40 sticky top-0 z-50 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 py-3">
           <div class="flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2 group">
+
+            <a href="index.html" class="flex items-center gap-2.5 group">
               <img src="${logoImg}" alt="CHREOL EMPIRE"
-                   class="w-10 h-10 object-contain rounded-full bg-blue-50 p-0.5 shadow"
+                   class="w-10 h-10 object-contain"
                    onerror="this.outerHTML='<span class=\'text-2xl\'>🔄</span>'"/>
-              <span class="text-xl md:text-2xl font-bold text-blue-700 group-hover:text-blue-800 transition-colors">CHREOL EMPIRE</span>
+              <span class="text-xl md:text-2xl font-bold text-white group-hover:text-amber-400 transition-colors tracking-tight">
+                CHREOL <span class="text-amber-400 group-hover:text-white transition-colors">EMPIRE</span>
+              </span>
             </a>
-            <nav class="hidden md:flex space-x-6">
+
+            <nav class="hidden md:flex items-center space-x-7">
               ${link('index.html', 'Accueil', 'home')}
               ${link('africa.html', '🌍 Africa', 'africa')}
               ${link('services.html', '🛎 Services', 'services')}
             </nav>
+
             <div class="flex items-center gap-3">
               <a href="https://wa.me/306973598677" target="_blank"
-                 class="hidden md:flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white text-sm font-bold py-2 px-4 rounded-lg transition-all shadow hover:shadow-lg">
+                 class="hidden md:flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white text-sm font-bold py-2 px-4 rounded-lg transition-all shadow">
                 ${waSvg('w-4 h-4')} Contactez-nous
               </a>
-              <a href="https://wa.me/306973598677" target="_blank" class="md:hidden text-green-600 p-2">
-                ${waSvg('w-7 h-7')}
+              <a href="https://wa.me/306973598677" target="_blank" class="md:hidden text-green-400 p-1.5">
+                ${waSvg('w-6 h-6')}
               </a>
-              <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-700">
+              <button id="mobile-menu-btn" class="md:hidden p-1.5 text-gray-300 hover:text-white">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                 </svg>
               </button>
             </div>
           </div>
-          <div id="mobile-menu" class="hidden md:hidden mt-4 pb-2 border-t border-gray-100">
-            <nav class="flex flex-col space-y-2 pt-4">
+
+          <div id="mobile-menu" class="hidden md:hidden mt-3 pb-3 border-t border-white/10">
+            <nav class="flex flex-col space-y-1 pt-3">
               ${mlink('index.html', 'Accueil', 'home')}
               ${mlink('africa.html', '🌍 Africa', 'africa')}
               ${mlink('services.html', '🛎 Services', 'services')}
               <a href="https://wa.me/306973598677" target="_blank"
-                 class="px-3 py-2 text-green-600 font-bold hover:bg-green-50 rounded">📞 WhatsApp</a>
+                 class="px-3 py-2 text-green-400 font-bold hover:bg-white/10 rounded transition-colors">
+                📞 WhatsApp
+              </a>
             </nav>
           </div>
         </div>
