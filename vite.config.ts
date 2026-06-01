@@ -24,6 +24,8 @@ build: {
   rollupOptions: {
     input: {
       main: resolve(__dirname, 'index.html'),
+      africa: resolve(__dirname, 'africa.html'),
+      services: resolve(__dirname, 'services.html'),
     },
     output: {
       entryFileNames: 'assets/[name]-[hash].js',

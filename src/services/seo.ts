@@ -10,9 +10,9 @@ export interface SEOConfig {
 
 export const SEOService = {
   defaults: {
-    title: 'CHREOL EMPIRE - Change EUR/CFA Rapide & Sécurisé',
-    description: 'Changez vos Euros en Francs CFA (et inversement) en moins de 5 minutes. Taux compétitifs : 650F/€. Paiement MTN, Orange, virement. Service disponible 7j/7.',
-    keywords: ['change eur cfa', 'transfert argent afrique', 'mobile money', 'mtn cote d ivoire', 'orange money', 'taux de change', 'envoi argent senegal', 'chreol empire'],
+    title: 'CHREOL EMPIRE — Change EUR ↔ FCFA | Rapide, Sécurisé, 24/7 depuis la Grèce',
+    description: 'Service de change EUR/FCFA fiable depuis Athènes. 1€ = 650 FCFA — Commission 3€/100€. Envoi en ≥5 min vers le Cameroun et toute l\'Afrique. MTN MoMo, Orange Money, Virement IBAN, PayPal, ZEN.',
+    keywords: ['change eur cfa', 'change eur fcfa', 'transfert argent afrique', 'mobile money', 'MTN MoMo', 'orange money', 'taux de change', 'envoi argent cameroun', 'senegal', 'cote d\'ivoire', 'chreol empire', 'grèce afrique', 'virement iban', 'paypal', 'ZEN bank'],
     image: 'https://chreol.github.io/ChreolChangeMoney/og-image.jpg',
     type: 'website' as const,
   },
