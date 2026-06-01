@@ -104,9 +104,11 @@ export class Layout {
 
   static getFooter(): string {
     return `
-      <footer class="bg-gray-900 text-gray-300 py-12">
+      <footer class="bg-gray-900 text-gray-300 py-14">
         <div class="max-w-7xl mx-auto px-4">
-          <div class="grid md:grid-cols-3 gap-8 mb-8">
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+
+            <!-- À propos -->
             <div>
               <div class="flex items-center gap-3 mb-3">
                 <img src="${logoImg}" alt="CHREOL EMPIRE"
@@ -114,36 +116,82 @@ export class Layout {
                      onerror="this.style.display='none'"/>
                 <h3 class="text-white font-bold text-lg">CHREOL EMPIRE</h3>
               </div>
-              <p class="text-sm text-gray-400 leading-relaxed">
-                Service de change EUR/CFA rapide, sécurisé et fiable.<br>Transferts vers l'Afrique et l'Europe — 7j/7.
+              <p class="text-sm text-gray-400 leading-relaxed mb-4">
+                Service de change EUR/FCFA rapide, sécurisé et fiable.<br/>
+                Transferts Grèce ↔ Afrique — 7j/7.
               </p>
-            </div>
-            <div>
-              <h3 class="text-white font-bold text-lg mb-4">Navigation</h3>
-              <ul class="space-y-2 text-sm">
+              <ul class="space-y-1.5 text-sm">
                 <li><a href="index.html" class="hover:text-white transition-colors">🏠 Accueil</a></li>
                 <li><a href="africa.html" class="hover:text-white transition-colors">🌍 Africa</a></li>
                 <li><a href="services.html" class="hover:text-white transition-colors">🛎 Services</a></li>
               </ul>
             </div>
+
+            <!-- Horaires -->
             <div>
-              <h3 class="text-white font-bold text-lg mb-4">Contact</h3>
-              <ul class="space-y-2 text-sm">
-                <li>
-                  <a href="https://wa.me/306973598677" target="_blank"
-                     class="hover:text-white transition-colors flex items-center gap-2">
-                    ${waSvg('w-4 h-4 text-green-500')} +30 697 359 8677
-                  </a>
-                </li>
-                <li class="flex items-center gap-2 text-gray-400">
-                  <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <h3 class="text-white font-bold text-lg mb-4">⏰ Disponibilité</h3>
+              <ul class="space-y-2 text-sm text-gray-400">
+                <li class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                   </svg>
-                  Disponible 7j/7 — 8h à 22h
+                  7j/7 — 8h à 22h
+                </li>
+                <li class="text-xs text-gray-500 mt-2">Traitement ≥ 5 min<br/>après confirmation de paiement</li>
+                <li class="mt-3">
+                  <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Taux du moment</span>
+                </li>
+                <li class="bg-gray-800 rounded-lg px-3 py-2 text-xs space-y-1 mt-1">
+                  <div class="flex justify-between"><span class="text-gray-400">EUR → FCFA</span><span class="text-amber-400 font-bold">650 FCFA/€</span></div>
+                  <div class="flex justify-between"><span class="text-gray-400">FCFA → EUR</span><span class="text-green-400 font-bold">660 FCFA/€</span></div>
                 </li>
               </ul>
             </div>
+
+            <!-- Agence Grèce -->
+            <div>
+              <h3 class="text-white font-bold text-lg mb-4">🇬🇷 CHREOL EMPIRE ATHNES</h3>
+              <div class="text-sm text-gray-400 space-y-2">
+                <p class="text-gray-300 font-medium">Point de change — Athènes</p>
+                <p class="flex items-start gap-2">
+                  <span class="text-lg flex-shrink-0">📍</span>
+                  <span>Restaurant Pakistanais – Tenedou 4,<br/>Platia Amerikis, 11252,<br/>Athènes, GRÈCE</span>
+                </p>
+                <a href="https://wa.me/306973598677" target="_blank"
+                   class="flex items-center gap-2 hover:text-white transition-colors">
+                  ${waSvg('w-4 h-4 text-green-400 flex-shrink-0')}
+                  <span>+30 697 359 8677</span>
+                </a>
+                <p class="flex items-start gap-2 text-xs text-gray-500">
+                  <span>💬</span>
+                  <span>Merci de privilégier les messages écrits.</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Agence Douala -->
+            <div>
+              <h3 class="text-white font-bold text-lg mb-4">🇨🇲 CHREOL EMPIRE DOUALA</h3>
+              <div class="text-sm text-gray-400 space-y-2">
+                <p class="text-gray-300 font-medium">Bureau — Douala, Cameroun</p>
+                <p class="flex items-start gap-2">
+                  <span class="text-lg flex-shrink-0">📍</span>
+                  <span>Vallée 3 Boutiques – Deido,<br/>Douala, Cameroun</span>
+                </p>
+                <a href="https://wa.me/237694360978" target="_blank"
+                   class="flex items-center gap-2 hover:text-white transition-colors">
+                  ${waSvg('w-4 h-4 text-green-400 flex-shrink-0')}
+                  <span>+237 694 360 978</span>
+                </a>
+                <p class="flex items-start gap-2 text-xs text-gray-500">
+                  <span>⚠️</span>
+                  <span>Merci de prendre RDV avant de vous déplacer.</span>
+                </p>
+              </div>
+            </div>
+
           </div>
+
           <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p class="text-sm text-gray-500">© 2026 CHREOL EMPIRE — Tous droits réservés</p>
             <div class="flex gap-6 text-sm text-gray-500">

@@ -116,6 +116,82 @@ export class ServicesPage {
           </div>
         </details>
 
+        <!-- Taux de change officiels -->
+        <details class="bg-white/95" open>
+          <summary class="cursor-pointer max-w-5xl mx-auto px-4 py-5 flex justify-between items-center list-none">
+            <h2 class="text-2xl font-bold flex items-center gap-2">📊 Taux de change officiels</h2>
+            <span class="text-gray-400 text-2xl details-arrow">▼</span>
+          </summary>
+          <div class="pb-10 bg-white">
+            <div class="max-w-5xl mx-auto px-4 pt-2">
+              <div class="overflow-x-auto rounded-2xl shadow-lg border border-gray-100">
+                <table class="w-full text-sm min-w-[600px]">
+                  <thead>
+                    <tr class="bg-gradient-to-r from-blue-700 to-indigo-700 text-white">
+                      <th class="py-3 px-4 text-left font-semibold">Opération</th>
+                      <th class="py-3 px-4 text-center font-semibold">Taux</th>
+                      <th class="py-3 px-4 text-center font-semibold">Commission</th>
+                      <th class="py-3 px-4 text-center font-semibold">Frais mobile</th>
+                      <th class="py-3 px-4 text-center font-semibold">Type</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="bg-amber-50 hover:bg-amber-100 transition-colors border-b border-amber-100">
+                      <td class="py-3 px-4 font-semibold">🇪🇺 EUR → 🌍 FCFA</td>
+                      <td class="py-3 px-4 text-center font-bold text-amber-700">650 FCFA / €</td>
+                      <td class="py-3 px-4 text-center text-gray-700">3 € / 100 €</td>
+                      <td class="py-3 px-4 text-center text-amber-600 font-medium">⚠️ À votre charge</td>
+                      <td class="py-3 px-4 text-center"><span class="bg-amber-100 text-amber-800 text-xs font-bold px-2 py-1 rounded-full">Envoi €</span></td>
+                    </tr>
+                    <tr class="bg-green-50 hover:bg-green-100 transition-colors border-b border-green-100">
+                      <td class="py-3 px-4 font-semibold">🌍 FCFA → 🇪🇺 EUR</td>
+                      <td class="py-3 px-4 text-center font-bold text-green-700">660 FCFA / €</td>
+                      <td class="py-3 px-4 text-center text-gray-700">3 € / 100 €</td>
+                      <td class="py-3 px-4 text-center text-amber-600 font-medium">⚠️ À votre charge</td>
+                      <td class="py-3 px-4 text-center"><span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded-full">Récept. €</span></td>
+                    </tr>
+                    <tr class="bg-yellow-50 hover:bg-yellow-100 transition-colors border-b border-yellow-100">
+                      <td class="py-3 px-4 font-semibold">🟡 MTN (ETS Contant)</td>
+                      <td class="py-3 px-4 text-center text-gray-600 text-xs">par direction</td>
+                      <td class="py-3 px-4 text-center text-gray-700">incluse</td>
+                      <td class="py-3 px-4 text-center text-amber-600 font-medium">⚠️ À votre charge</td>
+                      <td class="py-3 px-4 text-center"><span class="bg-yellow-100 text-yellow-800 text-xs font-bold px-2 py-1 rounded-full">Mobile</span></td>
+                    </tr>
+                    <tr class="bg-orange-50 hover:bg-orange-100 transition-colors border-b border-orange-100">
+                      <td class="py-3 px-4 font-semibold">🟠 Orange (Ets Tagny)</td>
+                      <td class="py-3 px-4 text-center text-gray-600 text-xs">par direction</td>
+                      <td class="py-3 px-4 text-center text-gray-700">incluse</td>
+                      <td class="py-3 px-4 text-center text-amber-600 font-medium">⚠️ À votre charge</td>
+                      <td class="py-3 px-4 text-center"><span class="bg-orange-100 text-orange-800 text-xs font-bold px-2 py-1 rounded-full">Mobile</span></td>
+                    </tr>
+                    <tr class="bg-blue-50 hover:bg-blue-100 transition-colors border-b border-blue-100">
+                      <td class="py-3 px-4 font-semibold">🌊 Wave / 📶 Airtel</td>
+                      <td class="py-3 px-4 text-center text-gray-600 text-xs">par direction</td>
+                      <td class="py-3 px-4 text-center text-gray-700">incluse</td>
+                      <td class="py-3 px-4 text-center text-amber-600 font-medium">⚠️ À votre charge</td>
+                      <td class="py-3 px-4 text-center"><span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded-full">Mobile</span></td>
+                    </tr>
+                    <tr class="bg-indigo-50 hover:bg-indigo-100 transition-colors">
+                      <td class="py-3 px-4 font-semibold">🏦 Virement | IRIS GR | PayPal</td>
+                      <td class="py-3 px-4 text-center text-gray-600 text-xs">par direction</td>
+                      <td class="py-3 px-4 text-center text-gray-700">variable</td>
+                      <td class="py-3 px-4 text-center text-gray-400">—</td>
+                      <td class="py-3 px-4 text-center"><span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2 py-1 rounded-full">Bancaire</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-start gap-3">
+                <span class="text-xl flex-shrink-0">⚠️</span>
+                <p class="text-sm text-amber-800">
+                  Les frais Mobile Money <strong>ne sont pas à la charge de ChreolChange</strong>.
+                  Traitement <strong>≤ 5 minutes</strong> après confirmation.
+                </p>
+              </div>
+            </div>
+          </div>
+        </details>
+
         <!-- Change de Devises -->
         <details class="bg-white/95">
           <summary class="cursor-pointer max-w-5xl mx-auto px-4 py-5 flex justify-between items-center list-none">
